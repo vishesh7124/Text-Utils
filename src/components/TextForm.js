@@ -4,6 +4,7 @@ import React,{useState} from 'react'
 
 export default function TextForm(props) {
     const[text,setText] = useState('')
+    const [textColor,setTextColor] = useState('')
     const handleCapClick = ()=>{
         let sentences = text.split(".")
         let new_sen = ""
@@ -47,17 +48,21 @@ export default function TextForm(props) {
         });
         return length
     }
+    const changeColor = (event)=>{
+        setTextColor(event.target.value)
+    }
 
     return (
         <>
         <div className="container">
             <div className="mb-3">
                 <h1>{props.heading}</h1>
-                <textarea className="form-control my-3"  id="myBox" rows="8" value={text} onChange={handleOnChange} ></textarea>
+                <textarea className="form-control my-3 "  id="myBox" style={{color :textColor}} rows="8" value={text} onChange={handleOnChange} ></textarea>
                 <button  type="button" className="btn btn-primary my-3 mx-2" onClick={handleUpClick} >Convert To UPPERCASE</button>
                 <button  type="button" className="btn btn-primary my-3 mx-2" onClick={handleLoClick} >Convert To lowercase</button>
                 <button  type="button" className="btn btn-primary my-3 mx-2" onClick={handleClearClick} >Clear Text</button>
                 <button  type="button" className="btn btn-primary my-3 mx-2" onClick={handleCapClick} >Capitallize</button>
+                <input type="color" className=" form-control form-control-color" id="exampleColorInput" value={textColor} title="Choose your color" onChange={changeColor}></input>
             </div>
 
         </div>
@@ -66,7 +71,7 @@ export default function TextForm(props) {
             <p>{wordCounter(text)} words and {lengthCounter(text)} characters</p>
             <p> {0.008 *wordCounter(text)} Minutes read</p>
             <h2>Preview</h2>
-            <p>{text}</p>
+            <p style={{color :textColor}}>{text}</p>
         </div>
         
         </>

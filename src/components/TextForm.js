@@ -59,6 +59,14 @@ export default function TextForm(props) {
         setText(newText.join(" "))  
     }
 
+    // feat-from-yt-2
+    const handleCopy =()=>{
+        let copyText = document.getElementById("myBox")
+        copyText.select()
+        // used to copy text to clipboard 
+        navigator.clipboard.writeText(copyText.value);
+    }
+
 
     return (
         <>
@@ -71,6 +79,7 @@ export default function TextForm(props) {
                 <button  type="button" className="btn btn-primary my-3 mx-2" onClick={handleClearClick} >Clear Text</button>
                 <button  type="button" className="btn btn-primary my-3 mx-2" onClick={handleCapClick} >Capitallize</button>
                 <button  type="button" className="btn btn-primary my-3 mx-2" onClick={handleExtraSpaces} >Remove Extra Spaces</button>
+                <button  type="button" className="btn btn-primary my-3 mx-2" onClick={handleCopy} >Copy Text</button>
                 <input type="color" className=" form-control form-control-color" id="exampleColorInput" value={textColor} title="Choose your color" onChange={changeColor}></input>
             </div>
 

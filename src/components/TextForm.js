@@ -52,6 +52,14 @@ export default function TextForm(props) {
         setTextColor(event.target.value)
     }
 
+    // feat-from-yt-1
+    const handleExtraSpaces = ()=>{
+        // using regex  /[ ]+/ this means one or more spaces
+        let newText = text.split(/[ ]+/)
+        setText(newText.join(" "))  
+    }
+
+
     return (
         <>
         <div className="container">
@@ -62,6 +70,7 @@ export default function TextForm(props) {
                 <button  type="button" className="btn btn-primary my-3 mx-2" onClick={handleLoClick} >Convert To lowercase</button>
                 <button  type="button" className="btn btn-primary my-3 mx-2" onClick={handleClearClick} >Clear Text</button>
                 <button  type="button" className="btn btn-primary my-3 mx-2" onClick={handleCapClick} >Capitallize</button>
+                <button  type="button" className="btn btn-primary my-3 mx-2" onClick={handleExtraSpaces} >Remove Extra Spaces</button>
                 <input type="color" className=" form-control form-control-color" id="exampleColorInput" value={textColor} title="Choose your color" onChange={changeColor}></input>
             </div>
 

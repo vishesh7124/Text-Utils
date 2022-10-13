@@ -70,10 +70,10 @@ export default function TextForm(props) {
 
     return (
         <>
-        <div className="container">
+        <div className="container" style={{color : props.mode==="light"?"black":"white"}} >
             <div className="mb-3">
                 <h1>{props.heading}</h1>
-                <textarea className="form-control my-3 "  id="myBox" style={{color :textColor}} rows="8" value={text} onChange={handleOnChange} ></textarea>
+                <textarea className="form-control my-3 "  id="myBox" style={{background:props.mode==="light"?"white":"grey",  color :textColor}} rows="8" value={text} onChange={handleOnChange} ></textarea>
                 <button  type="button" className="btn btn-primary my-3 mx-2" onClick={handleUpClick} >Convert To UPPERCASE</button>
                 <button  type="button" className="btn btn-primary my-3 mx-2" onClick={handleLoClick} >Convert To lowercase</button>
                 <button  type="button" className="btn btn-primary my-3 mx-2" onClick={handleClearClick} >Clear Text</button>
@@ -84,12 +84,12 @@ export default function TextForm(props) {
             </div>
 
         </div>
-        <div className="container">
+        <div className="container" style={{color : props.mode==="light"?"black":"white"}} >
             <h2>Text Summary</h2>
             <p>{wordCounter(text)} words and {lengthCounter(text)} characters</p>
             <p> {0.008 *wordCounter(text)} Minutes read</p>
             <h2>Preview</h2>
-            <p style={{color :textColor}}>{text}</p>
+            <p style={{color :textColor}}>{text.length>0?text:"Enter text in the box to preview it her."}</p>
         </div>
         
         </>

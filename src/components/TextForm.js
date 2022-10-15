@@ -20,6 +20,7 @@ export default function TextForm(props) {
         })
         let new_para = sen_list.join(". ")
         setText(new_para)
+        props.showAlert("Capitallizeation Done","success")
     }
     
     const handleOnChange = (event)=>{
@@ -27,12 +28,15 @@ export default function TextForm(props) {
     }
     const handleUpClick = ()=>{ 
         setText(text.toUpperCase())
+        props.showAlert("Converted to Uppercase","success")
     }  
     const handleLoClick = ()=>{ 
         setText(text.toLowerCase())  
+        props.showAlert("Converted to Lowerrcase","success")
     }
     const handleClearClick = ()=>{ 
         setText("")  
+        props.showAlert("All text Cleared ","success")
     }
     const wordCounter = (text)=>{
         return text.split(" ").filter(function(word){
@@ -51,20 +55,22 @@ export default function TextForm(props) {
     const changeColor = (event)=>{
         setTextColor(event.target.value)
     }
-
+    
     // feat-from-yt-1
     const handleExtraSpaces = ()=>{
         // using regex  /[ ]+/ this means one or more spaces
         let newText = text.split(/[ ]+/)
         setText(newText.join(" "))  
+        props.showAlert("All extra spaces removed ","success")
     }
-
+    
     // feat-from-yt-2
     const handleCopy =()=>{
         let copyText = document.getElementById("myBox")
         copyText.select()
         // used to copy text to clipboard 
         navigator.clipboard.writeText(copyText.value);
+        props.showAlert("Text Copied to clipboard ","success")
     }
 
 
